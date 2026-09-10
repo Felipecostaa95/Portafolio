@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Felipe Costa — Estrategia de contenido</title>
+<meta name="description" content="Periodista y estratega de contenido digital. Seis años construyendo ecosistemas de contenido en redes sociales.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — cambia acá los colores y tamaños de todo el sitio
+   ============================================================ */
+:root{
+  --paper:#ECEDEF;
+  --paper-2:#F6F6F7;
+  --ink:#17181C;
+  --ink-soft:#6B707A;
+  --rule:#D3D6DA;
+  --signal:#E8455F;      /* acento */
+  --deep:#232E4A;        /* azul profundo */
+
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+
+  --wrap:1140px;
+  --gut:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--signal);outline-offset:3px}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;margin:0;letter-spacing:-.025em;line-height:1.05}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(236,237,239,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.mark{font-family:var(--display);font-weight:700;font-size:.95rem;letter-spacing:-.01em;text-decoration:none}
+.mark span{color:var(--signal)}
+.topnav{display:flex;gap:26px}
+.topnav a{font-family:var(--display);font-size:.82rem;font-weight:500;text-decoration:none;color:var(--ink-soft)}
+.topnav a:hover{color:var(--ink)}
+@media(max-width:620px){.topnav{gap:16px}.topnav a{font-size:.76rem}}
+
+/* ============================================================
+   HERO — la grilla de canales es el elemento protagonista
+   ============================================================ */
+.hero{padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,70px)}
+.hero h1{
+  font-size:clamp(2.6rem,8.5vw,6.1rem);
+  font-weight:800;
+  letter-spacing:-.045em;
+  max-width:13ch;
+}
+.hero .lede{
+  font-size:clamp(1.05rem,2.1vw,1.3rem);
+  max-width:52ch;
+  margin:26px 0 0;
+  color:#33363D;
+}
+
+/* grilla de canales */
+.grid-wrap{margin-top:clamp(44px,6vw,72px);border-top:1px solid var(--rule);padding-top:30px}
+.lang-row{display:flex;align-items:center;gap:16px;margin-bottom:11px}
+.lang-key{
+  font-family:var(--display);font-weight:700;font-size:.72rem;
+  width:26px;flex:none;color:var(--ink-soft);
+}
+.cells{display:flex;gap:5px;flex-wrap:wrap}
+.cell{width:26px;height:26px;background:var(--deep);border-radius:2px}
+.cell.alt{background:var(--signal)}
+@media(max-width:520px){.cell{width:19px;height:19px}}
+
+.grid-caption{
+  margin-top:24px;font-family:var(--display);font-size:.85rem;
+  font-weight:500;color:var(--ink-soft);
+}
+
+/* stats */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:clamp(40px,5vw,58px);
+  border-top:1px solid var(--rule);padding-top:28px;
+}
+.stat .n{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.035em;display:block;line-height:1}
+.stat .l{font-family:var(--display);font-size:.8rem;font-weight:500;color:var(--ink-soft);margin-top:7px;display:block;line-height:1.35}
+@media(max-width:640px){.stats{grid-template-columns:1fr;gap:18px}}
+
+/* ============================================================
+   SECCIONES
+   ============================================================ */
+.band{padding:clamp(54px,8vw,96px) 0}
+.band--dark{background:var(--deep);color:var(--paper-2)}
+.band--dark .sec-title{color:#fff}
+.band--dark p{color:#C9CEDC}
+
+.sec-title{
+  font-size:clamp(1.5rem,3.4vw,2.15rem);
+  letter-spacing:-.035em;margin-bottom:34px;
+}
+
+/* ============================================================
+   CASOS
+   ============================================================ */
+.case{
+  border-top:1px solid var(--rule);
+  padding:clamp(30px,4vw,44px) 0;
+  display:grid;grid-template-columns:210px 1fr;gap:clamp(20px,4vw,48px);
+}
+@media(max-width:800px){.case{grid-template-columns:1fr;gap:14px}}
+
+.case-meta .role{font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.25}
+.case-meta .when{font-family:var(--display);font-size:.8rem;color:var(--ink-soft);margin-top:5px;font-weight:500}
+.case-meta .tag{
+  display:inline-block;margin-top:12px;font-family:var(--display);
+  font-size:.72rem;font-weight:600;padding:3px 9px;
+  border:1.5px solid var(--ink);border-radius:99px;
+}
+
+.case-body h3{font-size:clamp(1.25rem,2.6vw,1.65rem);letter-spacing:-.03em;margin-bottom:14px}
+.case-body p{margin:0 0 14px;max-width:66ch}
+.case-body p:last-child{margin-bottom:0}
+
+.step{margin:0 0 16px}
+.step .k{
+  font-family:var(--display);font-weight:700;font-size:.78rem;
+  display:block;margin-bottom:3px;
+}
+.result{
+  border-left:3px solid var(--signal);
+  padding:2px 0 2px 16px;margin-top:20px;
+}
+.result .k{color:var(--signal)}
+
+/* ============================================================
+   CÓMO TRABAJO
+   ============================================================ */
+.how{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,4vw,44px)}
+@media(max-width:760px){.how{grid-template-columns:1fr;gap:26px}}
+.how h3{font-size:1.08rem;margin-bottom:9px;letter-spacing:-.02em}
+.how p{margin:0;font-size:.98rem;max-width:52ch}
+
+/* ============================================================
+   HERRAMIENTAS
+   ============================================================ */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+@media(max-width:760px){.tools{grid-template-columns:1fr;gap:22px}}
+.tools h4{font-family:var(--display);font-size:.8rem;font-weight:700;margin-bottom:9px}
+.tools ul{list-style:none;margin:0;padding:0}
+.tools li{font-size:.95rem;padding:3px 0;color:#33363D}
+
+/* ============================================================
+   TRAYECTORIA
+   ============================================================ */
+.track{border-top:1px solid var(--rule)}
+.track-row{
+  display:grid;grid-template-columns:130px 1fr;gap:clamp(16px,3vw,36px);
+  padding:17px 0;border-bottom:1px solid var(--rule);
+}
+@media(max-width:640px){.track-row{grid-template-columns:1fr;gap:3px;padding:14px 0}}
+.track-row .yr{font-family:var(--display);font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.track-row .what{font-size:1rem}
+.track-row .what b{font-family:var(--display);font-weight:700}
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+.contact{padding:clamp(54px,8vw,96px) 0}
+.contact h2{font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:-.04em;margin-bottom:26px}
+.contact-list{display:flex;flex-wrap:wrap;gap:12px 30px;font-family:var(--display);font-weight:500;font-size:1rem}
+.contact-list a{text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:1px}
+.contact-list a:hover{background:var(--signal);color:#fff;border-color:var(--signal)}
+
+footer{border-top:1px solid var(--rule);padding:22px 0 34px;font-family:var(--display);font-size:.78rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#top">Felipe Costa<span>.</span></a>
+    <nav class="topnav">
+      <a href="#casos">Casos</a>
+      <a href="#metodo">Método</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero wrap" id="top">
+  <h1>Contenido que se planifica, se mide y se corrige.</h1>
+  <p class="lede">
+    Periodista. Llevo seis años construyendo ecosistemas de contenido
+    en redes sociales: defino la estrategia por plataforma, la ejecuto
+    con el equipo y la ajusto según lo que dicen las métricas.
+  </p>
+
+  <div class="grid-wrap">
+    <!-- Cada cuadrado representa un canal. Agrega o quita <i> para ajustar. -->
+    <div class="lang-row">
+      <span class="lang-key">ES</span>
+      <div class="cells">
+        <i class="cell"></i><i class="cell"></i><i class="cell"></i><i class="cell"></i>
+        <i class="cell"></i><i class="cell"></i><i class="cell"></i><i class="cell alt"></i>
+      </div>
+    </div>
+    <div class="lang-row">
+      <span class="lang-key">EN</span>
+      <div class="cells">
+        <i class="cell"></i><i class="cell"></i><i class="cell"></i><i class="cell"></i>
+        <i class="cell"></i><i class="cell alt"></i><i class="cell"></i>
+      </div>
+    </div>
+    <div class="lang-row">
+      <span class="lang-key">FR</span>
+      <div class="cells">
+        <i class="cell"></i><i class="cell"></i><i class="cell"></i><i class="cell"></i>
+        <i class="cell alt"></i>
+      </div>
+    </div>
+    <p class="grid-caption">Cada cuadrado es un canal activo con producción diaria.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">20+</span>
+      <span class="l">canales digitales bajo mi dirección editorial</span>
+    </div>
+    <div class="stat">
+      <span class="n">90M</span>
+      <span class="l">visualizaciones mensuales</span>
+    </div>
+    <div class="stat">
+      <span class="n">3</span>
+      <span class="l">idiomas: español, inglés y francés</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     CASOS
+     ============================================================ -->
+<section class="band wrap" id="casos">
+  <h2 class="sec-title">Casos</h2>
+
+  <!-- CASO 1 -->
+  <article class="case">
+    <div class="case-meta">
+      <div class="role">Upsomedia</div>
+      <div class="when">2026 · Jefe de Área de Contenidos</div>
+      <span class="tag">Estrategia</span>
+    </div>
+    <div class="case-body">
+      <h3>Reconstruir la estrategia cuando la plataforma cambia las reglas</h3>
+
+      <div class="step">
+        <span class="k">Contexto</span>
+        Snapchat era el canal principal de la operación. Recibimos aviso de una
+        migración obligatoria en los tipos de cuenta para media partners:
+        cambiaba el formato de los perfiles, la lógica de monetización y la
+        forma de llegar a la audiencia. Plazo: menos de un mes para mover
+        todas las cuentas.
+      </div>
+
+      <div class="step">
+        <span class="k">El problema real</span>
+        La migración técnica salió a tiempo. Lo difícil vino después: los
+        canales de soporte se cerraron detrás de un filtro automatizado, justo
+        cuando necesitábamos entender un sistema nuevo. Nadie tenía respuestas
+        y las reglas de distribución habían cambiado por completo.
+      </div>
+
+      <div class="step">
+        <span class="k">Qué hice</span>
+        Busqué la información donde sí estaba. Fui a los foros de creadores,
+        vi que todos enfrentaban lo mismo y armé una comunidad con creadores de
+        distintos países para compartir hallazgos y contrastar hipótesis.
+        Con esa base montamos un ciclo de testeo: probar formatos y vías de
+        distribución, medir retención y desempeño por canal, descartar lo que
+        no rendía y escalar lo que sí. También desarrollé filtros de cámara
+        interactivos para abrir un punto de contacto nuevo con la audiencia.
+      </div>
+
+      <div class="result">
+        <span class="k">Resultado</span>
+        Recuperamos la monetización en la totalidad de los canales y abrimos
+        vías de ingreso en formatos que antes no generaban nada.
+      </div>
+    </div>
+  </article>
+
+  <!-- CASO 2 -->
+  <article class="case">
+    <div class="case-meta">
+      <div class="role">Upsomedia</div>
+      <div class="when">En curso · Operación editorial</div>
+      <span class="tag">Sistema</span>
+    </div>
+    <div class="case-body">
+      <h3>Un sistema editorial para 20 canales en tres idiomas</h3>
+
+      <div class="step">
+        <span class="k">El problema</span>
+        Con más de veinte canales publicando a diario en tres idiomas, coordinar
+        caso a caso no escala. Cada canal tiene su audiencia, su formato y su
+        ritmo, y varios redactores escribiendo en paralelo terminan tirando
+        cada uno para su lado con el tono.
+      </div>
+
+      <div class="step">
+        <span class="k">Qué construí</span>
+        Un calendario de producción con reglas de formato explícitas por canal,
+        asignación de equipos según fortalezas y cuotas balanceadas de
+        traducción. Cada pieza tiene claro qué formato le corresponde, quién la
+        produce y cuándo se revisa. Definí también los pilares de contenido de
+        cada marca para que las decisiones diarias no dependan de mi criterio
+        individual.
+      </div>
+
+      <div class="step">
+        <span class="k">IA en el flujo</span>
+        Integré modelos de lenguaje a las etapas de investigación de temas,
+        generación de ángulos editoriales y adaptación de contenido entre
+        canales e idiomas. La pieza clave fueron los prompts estructurados y
+        reutilizables por plataforma: permiten subir el volumen sin que la voz
+        de cada marca se disuelva entre redactores distintos.
+      </div>
+
+      <div class="result">
+        <span class="k">Resultado</span>
+        Producción diaria estandarizada, consistencia de tono entre marcas y
+        un sistema que funciona sin depender de supervisión pieza por pieza.
+      </div>
+    </div>
+  </article>
+
+  <!-- CASO 3 -->
+  <article class="case">
+    <div class="case-meta">
+      <div class="role">Fintual</div>
+      <div class="when">Febrero 2026 · Proyecto UX/UI</div>
+      <span class="tag">Producto</span>
+    </div>
+    <div class="case-body">
+      <h3>Rediseñar el home de una plataforma de inversiones</h3>
+      <p>
+        Proyecto encargado por Fintual para repensar la página principal de su
+        plataforma. Trabajé la arquitectura de información y el prototipado
+        pensando en un problema específico de los productos financieros: cómo
+        entregar información suficiente para decidir sin abrumar ni erosionar
+        la confianza.
+      </p>
+      <p>
+        Es el mismo criterio que aplico en contenido — qué se dice primero, qué
+        puede esperar, qué necesita contexto — pero resuelto en una interfaz.
+      </p>
+      <!-- Sugerencia: sube acá una imagen del prototipo si tienes autorización.
+           <img src="fintual.jpg" alt="Prototipo del home de Fintual" style="width:100%;margin-top:18px;border-radius:3px"> -->
+    </div>
+  </article>
+
+  <!-- CASO 4 -->
+  <article class="case">
+    <div class="case-meta">
+      <div class="role">Lili App</div>
+      <div class="when">May – Sep 2025 · Proyecto UX/UI</div>
+      <span class="tag">Producto</span>
+    </div>
+    <div class="case-body">
+      <h3>La vista de clientes de una startup, bajo Scrum</h3>
+      <p>
+        Diseño de la plataforma de clientes de Lili, desde la investigación de
+        usuario y marca hasta la nueva vista. Trabajé codo a codo con los
+        equipos de Data Science y desarrollo dentro de ciclos Scrum.
+      </p>
+      <p>
+        El diseño está implementado en la versión activa de la aplicación.
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================
+     MÉTODO
+     ============================================================ -->
+<section class="band band--dark" id="metodo">
+  <div class="wrap">
+    <h2 class="sec-title">Cómo trabajo</h2>
+    <div class="how">
+      <div>
+        <h3>La estrategia y la ejecución no se separan</h3>
+        <p>
+          Defino el plan y también produzco cuando el ritmo lo exige. Conocer
+          el costo real de cada decisión editorial cambia la calidad del plan.
+        </p>
+      </div>
+      <div>
+        <h3>Hipótesis antes que intuición</h3>
+        <p>
+          Cada cambio de formato o frecuencia parte como una hipótesis con un
+          hito de revisión definido. Sin eso, el equipo termina corrigiendo
+          por sensación.
+        </p>
+      </div>
+      <div>
+        <h3>Los datos son una pregunta, no un reporte</h3>
+        <p>
+          Retención, view time y desempeño por canal me sirven para decidir qué
+          se mantiene, qué se ajusta y qué se descarta. La métrica que no
+          cambia una decisión no la reviso.
+        </p>
+      </div>
+      <div>
+        <h3>La IA multiplica volumen, no criterio</h3>
+        <p>
+          La uso a diario en investigación, borradores y adaptación entre
+          canales. La decisión editorial sigue siendo humana y todo pasa por
+          revisión antes de salir.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HERRAMIENTAS
+     ============================================================ -->
+<section class="band wrap">
+  <h2 class="sec-title">Herramientas</h2>
+  <div class="tools">
+    <div>
+      <h4>Estrategia y análisis</h4>
+      <ul>
+        <li>Meta Business Suite</li>
+        <li>Google Analytics</li>
+        <li>Snapchat Creators</li>
+        <li>WordPress</li>
+      </ul>
+    </div>
+    <div>
+      <h4>IA</h4>
+      <ul>
+        <li>Claude</li>
+        <li>ChatGPT</li>
+        <li>Gemini</li>
+        <li>Prompts estructurados por canal</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Producción y diseño</h4>
+      <ul>
+        <li>Final Cut Pro · Adobe Premiere</li>
+        <li>CapCut</li>
+        <li>Adobe Audition</li>
+        <li>Figma · Photoshop · InDesign</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRAYECTORIA
+     ============================================================ -->
+<section class="band wrap" id="trayectoria">
+  <h2 class="sec-title">Trayectoria</h2>
+  <div class="track">
+    <div class="track-row">
+      <div class="yr">2020 — hoy</div>
+      <div class="what"><b>Jefe de Área / Editor de Contenidos Digitales</b> — Upsomedia, Santiago</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">Febrero 2026</div>
+      <div class="what"><b>Diseñador UX/UI</b> — Fintual (proyecto independiente)</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">May — Sep 2025</div>
+      <div class="what"><b>Diseñador UX/UI</b> — Lili App (proyecto independiente)</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">2021</div>
+      <div class="what"><b>Co-Director Audiovisual</b> — Producciones Mundo</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">2017</div>
+      <div class="what"><b>Redactor</b> — El Definido</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">2016</div>
+      <div class="what"><b>Práctica profesional, edición de video</b> — CNN Chile</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">2025</div>
+      <div class="what"><b>Diseño UX/UI</b> — Universidad del Desarrollo, bootcamp de 280 horas · Sobresaliente</div>
+    </div>
+    <div class="track-row">
+      <div class="yr">2015 — 2019</div>
+      <div class="what"><b>Periodismo</b> — Universidad del Desarrollo · Intercambio en University of Jyväskylä, Finlandia (2018)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACTO
+     ============================================================ -->
+<section class="contact wrap" id="contacto">
+  <h2>Conversemos.</h2>
+  <div class="contact-list">
+    <span><a href="mailto:fcostaa@udd.cl">fcostaa@udd.cl</a></span>
+    <span><a href="tel:+56996342104">+56 9 9634 2104</a></span>
+    <span><a href="https://www.linkedin.com/in/felipe-costa-altamirano" target="_blank" rel="noopener">LinkedIn</a></span>
+    <span><a href="https://www.behance.net/felipecosta201" target="_blank" rel="noopener">Behance</a></span>
+  </div>
+</section>
+
+<footer class="wrap">Felipe Costa Altamirano · Las Condes, Santiago de Chile</footer>
+
+</body>
+</html>
